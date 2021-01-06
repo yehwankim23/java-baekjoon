@@ -2,44 +2,32 @@ package l03.p11921;
 
 // 주소: https://www.acmicpc.net/problem/11921
 // 제목: 0.1
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 0.2점
+// 메모리: 11692 KB
+// 시간: 84 ms
 
-import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class Main {
-    private static BufferedInputStream bis = new BufferedInputStream(System.in);
-    private static BufferedWriter bw
-            = new BufferedWriter(new OutputStreamWriter(System.out));
-    
-    public static void main(String[] args) throws IOException {
-        readInt();
-        int n = 7500;
+    public static void main(String[] args) throws Exception {
+        BufferedWriter bw
+                = new BufferedWriter(new OutputStreamWriter(System.out));
+        byte[] buffer = new byte[100000];
+        System.in.read(buffer, 0, buffer.length);
+        int index = 8;
         long sum = 0;
         
-        // FIXME - 0.1
-        for (int i = 0; i < n; i++) {
-            sum += readInt();
+        for (int i = 0, n = 0, b; i < 10000; i++, n = 0) {
+            while ((b = buffer[index++]) != '\n') {
+                n *= 10;
+                n += b - '0';
+            }
+            
+            sum += n;
         }
         
-        bw.write(Integer.toString(n));
-        bw.newLine();
-        bw.write(Long.toString(sum));
+        bw.write("10000\n".concat(Long.toString(sum)));
         bw.flush();
-    }
-    
-    private static int readInt() throws IOException {
-        int value = 0;
-        
-        for (int data = bis.read(); data > 47; data = bis.read()) {
-            value = value * 10 + data - 48;
-        }
-        
-        bis.read();
-        return value;
     }
 }
