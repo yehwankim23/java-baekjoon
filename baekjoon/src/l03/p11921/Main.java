@@ -14,12 +14,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedWriter bw
                 = new BufferedWriter(new OutputStreamWriter(System.out));
-        byte[] buffer = new byte[10000000];
+        byte[] buffer = new byte[5000000];
         System.in.read(buffer, 0, buffer.length);
         int index = 8;
         long sum = 0;
         
-        for (int i = 0, n = 0, b; i < 1000000; i++, n = 0) {
+        for (int i = 0, n = 0, b; i < 500000; i++, n = 0) {
             while ((b = buffer[index++]) != '\n') {
                 n *= 10;
                 n += b - '0';
@@ -28,7 +28,7 @@ public class Main {
             sum += n;
         }
         
-        bw.write("1000000\n".concat(Long.toString(sum)));
+        bw.write("500000\n".concat(Long.toString(sum)));
         bw.flush();
     }
 }
