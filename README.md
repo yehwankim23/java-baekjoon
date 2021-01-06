@@ -1,2 +1,2 @@
 # java-baekjoon
-2020
+Baekjoon Online Judge
