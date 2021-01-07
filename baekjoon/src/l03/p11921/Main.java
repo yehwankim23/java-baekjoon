@@ -9,16 +9,15 @@ package l03.p11921;
 // FIXME - 0.1
 public class Main {
     public static void main(String[] args) throws Exception {
-        byte[] buffer = new byte[6250000];
-        System.in.read(buffer, 0, 6250000);
-        int i = 0, temp = 0, index = 8;
-        byte b;
+        byte[] buffer = new byte[6000000];
+        System.in.read(buffer, 0, 6000000);
+        int i = 0, temp = 0, index = 8, b;
         long sum = 0;
         
-        while (i++ < 625000) {
+        while (i++ < 600000) {
             temp = buffer[index++] - 48;
             
-            while ((b = buffer[index++]) != '\n') {
+            while ((b = buffer[index++]) != 10) {
                 temp *= 10;
                 temp += b - 48;
             }
@@ -26,13 +25,13 @@ public class Main {
             sum += temp;
         }
         
-        buffer[0] = '6';
-        buffer[1] = '2';
-        buffer[2] = '5';
-        buffer[3] = '0';
-        buffer[4] = '0';
-        buffer[5] = '0';
-        buffer[6] = '\n';
+        buffer[0] = 54;
+        buffer[1] = 48;
+        buffer[2] = 48;
+        buffer[3] = 48;
+        buffer[4] = 48;
+        buffer[5] = 48;
+        buffer[6] = 10;
         temp = 25;
         
         while (sum > 0) {
