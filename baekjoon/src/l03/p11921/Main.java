@@ -2,15 +2,14 @@ package l03.p11921;
 
 // 주소: https://www.acmicpc.net/problem/11921
 // 제목: 0.1
-// 결과: 시간 초과
-// 메모리: - KB
-// 시간: - ms
+// 결과: 5점
+// 메모리: 15500 KB
+// 시간: 100 ms
 
-// FIXME - 0.1
 public class Main {
     public static void main(String[] args) throws Exception {
-        byte[] buffer = new byte[45000008];
-        System.in.read(buffer, 0, 45000008);
+        byte[] buffer = new byte[2000000];
+        System.in.read(buffer, 0, 2000000);
         int index = 8;
         long sum = 0;
         
