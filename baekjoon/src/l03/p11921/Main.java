@@ -3,7 +3,7 @@ package l03.p11921;
 // 주소: https://www.acmicpc.net/problem/11921
 // 제목: 0.1
 // 결과: 5점
-// 메모리: 16468 KB
+// 메모리: 16424 KB
 // 시간: 100 ms
 
 public class Main {
@@ -29,11 +29,15 @@ public class Main {
         buffer[4] = '0';
         buffer[5] = '0';
         buffer[6] = '\n';
-        index = (int) (Math.log10(sum) + 1);
+        index = 0;
         
-        for (int i = index; i > 0; i--) {
-            buffer[6 + i] = (byte) (sum % 10 + 48);
+        while (sum > 0) {
+            buffer[20 + index++] = (byte) (sum % 10 + 48);
             sum /= 10;
+        }
+        
+        for (int i = 0; i < index; i++) {
+            buffer[7 + i] = buffer[19 + index - i];
         }
         
         System.out.write(buffer, 0, 7 + index);
