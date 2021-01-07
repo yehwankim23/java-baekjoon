@@ -2,11 +2,10 @@ package l03.p11921;
 
 // 주소: https://www.acmicpc.net/problem/11921
 // 제목: 0.1
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 5점
+// 메모리: 16500 KB
+// 시간: 96 ms
 
-// FIXME - 0.1
 public class Main {
     public static void main(String[] args) throws Exception {
         byte[] buffer = new byte[2500000];
@@ -33,7 +32,7 @@ public class Main {
         buffer[4] = '0';
         buffer[5] = '0';
         buffer[6] = '\n';
-        temp = 16;
+        temp = 25;
         
         while (sum > 0) {
             buffer[temp++] = (byte) (sum % 10 + 48);
@@ -42,7 +41,7 @@ public class Main {
         
         index = 7;
         
-        while (temp-- > 16) {
+        while (temp-- > 25) {
             buffer[index++] = buffer[temp];
         }
         
