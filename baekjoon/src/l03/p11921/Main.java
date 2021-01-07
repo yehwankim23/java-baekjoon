@@ -9,8 +9,8 @@ package l03.p11921;
 // FIXME - 0.1
 public class Main {
     public static void main(String[] args) throws Exception {
-        byte[] buffer = new byte[2250008];
-        System.in.read(buffer, 0, 2250008);
+        byte[] buffer = new byte[2500000];
+        System.in.read(buffer, 0, 2500000);
         int i = 0, temp = 0, index = 8;
         byte b;
         long sum = 0;
