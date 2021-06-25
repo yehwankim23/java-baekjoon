@@ -2,15 +2,17 @@ package p18870;
 
 // 주소: https://www.acmicpc.net/problem/18870
 // 제목: 좌표 압축
-// 결과: 시간 초과
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 344752 KB
+// 시간: 2952 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -20,23 +22,26 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         br.close();
 
-        int[] arr = new int[n];
-        ArrayList<Integer> al = new ArrayList<Integer>();
+        int[] key = new int[n];
+        TreeSet<Integer> ts = new TreeSet<Integer>();
 
-        for (int i = 0; i < n; i++) {
-            int x = Integer.parseInt(st.nextToken());
-            arr[i] = x;
-
-            if (!al.contains(x)) {
-                al.add(x);
-            }
+        for (int i = 0; i < key.length; i++) {
+            int x = Integer.parseInt(st.nextToken()) + 1000000000;
+            key[i] = x;
+            ts.add(x);
         }
 
-        al.sort(null);
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        Iterator<Integer> iter = ts.iterator();
+
+        for (int i = 0; i < ts.size(); i++) {
+            hm.put(iter.next(), i);
+        }
+
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < n; i++) {
-            sb.append(al.indexOf(arr[i]) + " ");
+        for (int i = 0; i < key.length; i++) {
+            sb.append(hm.get(key[i]) + " ");
         }
 
         System.out.println(sb);
