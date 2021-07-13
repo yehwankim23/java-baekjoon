@@ -2,9 +2,9 @@ package p14888;
 
 // 주소: https://www.acmicpc.net/problem/14888
 // 제목: 연산자 끼워넣기
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 18424 KB
+// 시간: 1060 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,7 +70,9 @@ public class Main {
 
             if (result > max) {
                 max = result;
-            } else if (result < min) {
+            }
+
+            if (result < min) {
                 min = result;
             }
         } else {
