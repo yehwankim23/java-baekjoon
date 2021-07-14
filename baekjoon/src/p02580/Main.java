@@ -56,67 +56,37 @@ public class Main {
             int coord = empty[index];
             int row = coord / 10;
             int col = coord % 10;
-            boolean found = false;
-            int sumRow = 45;
-            int sumCol = 45;
-            int sumSqr = 45;
-            int countRow = 0;
-            int countCol = 0;
-            int countSqr = 0;
-            int startRow = row / 3 * 3;
-            int startCol = col / 3 * 3;
             boolean[] candidate = new boolean[9];
             Arrays.fill(candidate, true);
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0, startRow = row / 3 * 3, startCol = col / 3 * 3;
+                    i < 9; i++) {
                 int checkRow = board[row][i];
                 int checkCol = board[i][col];
                 int checkSqr = board[startRow + i / 3][startCol + i % 3];
 
-                sumRow -= checkRow;
-                sumCol -= checkCol;
-                sumSqr -= checkSqr;
-
-                if (checkRow == 0) {
-                    countRow++;
-                } else {
-                    candidate[checkRow - 1] = false;
+                if (checkRow > 0) {
+                    candidate[board[row][i] - 1] = false;
                 }
 
-                if (checkCol == 0) {
-                    countCol++;
-                } else {
-                    candidate[checkCol - 1] = false;
+                if (checkCol > 0) {
+                    candidate[board[i][col] - 1] = false;
                 }
 
-                if (checkSqr == 0) {
-                    countSqr++;
-                } else {
-                    candidate[checkSqr - 1] = false;
+                if (checkSqr > 0) {
+                    candidate[board[startRow + i / 3][startCol + i % 3] - 1]
+                            = false;
                 }
             }
 
-            if (countRow == 1 && sumRow < 10) {
-                board[row][col] = sumRow;
-                found = true;
-            } else if (countCol == 1 && sumCol < 10) {
-                board[row][col] = sumCol;
-                found = true;
-            } else if (countSqr == 1 && sumSqr < 10) {
-                board[row][col] = sumSqr;
-                found = true;
-            }
-
-            if (found) {
-                backtrack(index + 1);
-            } else {
-                for (int i = 0; i < 9; i++) {
-                    if (candidate[i]) {
-                        board[row][col] = i + 1;
-                        backtrack(index + 1);
-                    }
+            for (int i = 0; i < 9; i++) {
+                if (candidate[i]) {
+                    board[row][col] = i + 1;
+                    backtrack(index + 1);
                 }
             }
+
+            board[row][col] = 0;
         }
     }
 }
