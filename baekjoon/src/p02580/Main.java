@@ -2,9 +2,9 @@ package p02580;
 
 // 주소: https://www.acmicpc.net/problem/2580
 // 제목: 스도쿠
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 92616 KB
+// 시간: 412 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class Main {
         backtrack(0);
     }
 
-    private static void backtrack(int index) {
+    private static boolean backtrack(int index) {
         if (index == count) {
             StringBuilder sb = new StringBuilder();
 
@@ -51,7 +51,7 @@ public class Main {
             }
 
             System.out.println(sb);
-            return;
+            return true;
         } else {
             int coord = empty[index];
             int row = coord / 10;
@@ -82,11 +82,15 @@ public class Main {
             for (int i = 0; i < 9; i++) {
                 if (candidate[i]) {
                     board[row][col] = i + 1;
-                    backtrack(index + 1);
+
+                    if (backtrack(index + 1)) {
+                        return true;
+                    }
                 }
             }
 
             board[row][col] = 0;
+            return false;
         }
     }
 }
