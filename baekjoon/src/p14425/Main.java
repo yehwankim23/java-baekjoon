@@ -2,9 +2,9 @@ package p14425;
 
 // 주소: https://www.acmicpc.net/problem/14425
 // 제목: 문자열 집합
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 872772 KB
+// 시간: 3012 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,6 +53,8 @@ public class Main {
                     }
 
                     copy = (HashMap) copy.get(c);
+                } else {
+                    break;
                 }
             }
         }
