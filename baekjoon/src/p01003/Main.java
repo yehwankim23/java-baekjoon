@@ -2,9 +2,9 @@ package p01003;
 
 // 주소: https://www.acmicpc.net/problem/1003
 // 제목: 피보나치 함수
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 14024 KB
+// 시간: 124 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class Main {
         int t = Integer.parseInt(br.readLine());
         int[][] cache = new int[41][2];
 
-        for (int i = 0, prev = 0, curr = 1; i < 11; i++) {
+        for (int i = 0, prev = 0, curr = 1; i < 41; i++) {
             cache[i][0] = curr - prev;
             cache[i][1] = prev;
 
