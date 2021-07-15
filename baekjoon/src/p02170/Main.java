@@ -2,17 +2,17 @@ package p02170;
 
 // 주소: https://www.acmicpc.net/problem/2170
 // 제목: 선 긋기
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 358244 KB
+// 시간: 2316 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -20,14 +20,14 @@ public class Main {
                 = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st;
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        TreeMap<Integer, Integer> tm = new TreeMap<Integer, Integer>();
 
         while (n-- > 0) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
 
-            hm.put(x, y);
+            tm.put(x, y);
         }
 
         br.close();
@@ -35,14 +35,16 @@ public class Main {
         int end = -1000000000;
         int sum = 0;
 
-        for (Iterator<Entry<Integer, Integer>> i = hm.entrySet().iterator();
+        for (Iterator<Entry<Integer, Integer>> i = tm.entrySet().iterator();
                 i.hasNext();) {
             Entry<Integer, Integer> entry = i.next();
             int key = entry.getKey();
             int value = entry.getValue();
 
             if (key <= end) {
-                end = value;
+                if (value > end) {
+                    end = value;
+                }
             } else {
                 sum += end - start;
                 start = key;
