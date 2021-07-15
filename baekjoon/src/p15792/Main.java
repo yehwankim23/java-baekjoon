@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
 public class Main {
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) throws IOException {
         BufferedReader br
                 = new BufferedReader(new InputStreamReader(System.in));
@@ -20,7 +21,7 @@ public class Main {
         br.close();
         BigDecimal a = new BigDecimal(st.nextToken()),
                 b = new BigDecimal(st.nextToken());
-        
+
         System.out.println(a.divide(b, 1024, BigDecimal.ROUND_HALF_UP));
     }
 }
