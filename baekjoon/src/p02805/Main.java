@@ -32,11 +32,11 @@ public class Main {
             }
         }
 
-        for (max -= m / n; max >= 0; max--) {
-            int sum = 0;
+        max -= m / n;
 
-            for (int i = 0; i < n; i++) {
-                int height = tree[i];
+        for (int sum = 0; max >= 0; max -= (max - sum) / n - 1) {
+            for (int j = 0; j < n; j++) {
+                int height = tree[j];
 
                 if (height > max) {
                     sum += height - max;
