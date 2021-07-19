@@ -55,7 +55,10 @@ public class Main {
 
             if (sum >= m) {
                 min = mid + 1;
-                height = mid;
+
+                if (mid > height) {
+                    height = mid;
+                }
 
                 if (sum == m) {
                     break;
