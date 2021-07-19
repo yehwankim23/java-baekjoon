@@ -2,9 +2,9 @@ package p02805;
 
 // 주소: https://www.acmicpc.net/problem/2805
 // 제목: 나무 자르기
-// 결과: 틀렸습니다
-// 메모리: - KB
-// 시간: - ms
+// 결과: 맞았습니다!!
+// 메모리: 119360 KB
+// 시간: 544 ms
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class Main {
             }
         }
 
-        int sum = 0;
+        long sum = 0;
         int min = 0;
         int height = 0;
 
