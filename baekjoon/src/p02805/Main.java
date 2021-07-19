@@ -2,7 +2,7 @@ package p02805;
 
 // 주소: https://www.acmicpc.net/problem/2805
 // 제목: 나무 자르기
-// 결과: 시간 초과
+// 결과: 틀렸습니다
 // 메모리: - KB
 // 시간: - ms
 
@@ -37,11 +37,11 @@ public class Main {
         Arrays.sort(tree);
         int sum = 0;
         int min = 0;
-        int mid = 0;
+        int height = 0;
 
-        while (sum != m) {
+        while (min <= max) {
             sum = 0;
-            mid = (min + max) / 2;
+            int mid = (min + max) / 2;
 
             for (int i = n - 1; i >= 0; i--) {
                 int length = tree[i] - mid;
@@ -53,13 +53,18 @@ public class Main {
                 sum += length;
             }
 
-            if (sum < m) {
-                max = mid - 1;
-            } else if (sum > m) {
+            if (sum >= m) {
                 min = mid + 1;
+                height = mid;
+
+                if (sum == m) {
+                    break;
+                }
+            } else {
+                max = mid - 1;
             }
         }
 
-        System.out.println(mid);
+        System.out.println(height);
     }
 }
