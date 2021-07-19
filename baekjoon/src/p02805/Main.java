@@ -9,7 +9,6 @@ package p02805;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -34,7 +33,6 @@ public class Main {
             }
         }
 
-        Arrays.sort(tree);
         int sum = 0;
         int min = 0;
         int height = 0;
@@ -43,28 +41,19 @@ public class Main {
             sum = 0;
             int mid = (min + max) / 2;
 
-            for (int i = n - 1; i >= 0; i--) {
-                int length = tree[i] - mid;
+            for (int i = 0; i < n; i++) {
+                int length = tree[i];
 
-                if (length <= 0) {
-                    break;
+                if (length > mid) {
+                    sum += length - mid;
                 }
-
-                sum += length;
             }
 
-            if (sum >= m) {
-                min = mid + 1;
-
-                if (mid > height) {
-                    height = mid;
-                }
-
-                if (sum == m) {
-                    break;
-                }
-            } else {
+            if (sum < m) {
                 max = mid - 1;
+            } else {
+                height = mid;
+                min = mid + 1;
             }
         }
 
