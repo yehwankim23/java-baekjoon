@@ -9,9 +9,11 @@ package p02805;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br
                 = new BufferedReader(new InputStreamReader(System.in));
@@ -32,21 +34,32 @@ public class Main {
             }
         }
 
-        max -= m / n;
+        Arrays.sort(tree);
+        int sum = 0;
+        int min = 0;
+        int mid = 0;
 
-        for (int sum = 0; max >= 0; max -= (max - sum) / n - 1) {
-            for (int j = 0; j < n; j++) {
-                int height = tree[j];
+        while (sum != m) {
+            sum = 0;
+            mid = (min + max) / 2;
 
-                if (height > max) {
-                    sum += height - max;
+            for (int i = n - 1; i >= 0; i--) {
+                int length = tree[i] - mid;
+
+                if (length <= 0) {
+                    break;
                 }
+
+                sum += length;
             }
 
-            if (sum >= m) {
-                System.out.println(max);
-                break;
+            if (sum < m) {
+                max = mid - 1;
+            } else if (sum > m) {
+                min = mid + 1;
             }
         }
+
+        System.out.println(mid);
     }
 }
